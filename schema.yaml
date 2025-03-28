@@ -1,10 +1,273 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      properties:
+        image_name:
+          title: Image Name
+          type: string
+          description: Name for the log server image
+          default: openldap-by-terraform
+          x-walrus-ui:
+            group: Basic
+            order: 2
+        image_url:
+          title: Image Url
+          type: string
+          description: URL to download the image from
+          default: http://minio.zstack.io:9001/packer/openldap-by-packer-image-compressed.qcow2
+          x-walrus-ui:
+            group: Basic
+            order: 3
+        backup_storage_name:
+          title: Backup Storage Name
+          type: string
+          description: Name of the backup storage to use
+          default: Ceph
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        instance_name:
+          title: Instance Name
+          type: string
+          description: Name for the openldap server instance
+          default: openldap
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        l3_network_name:
+          title: L3 Network Name
+          type: string
+          description: Name of the L3 network to use
+          default: test
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        instance_offering_name:
+          title: Instance Offering Name
+          type: string
+          description: Name of the instance offering to use
+          default: min
+          x-walrus-ui:
+            group: Basic
+            order: 7
+        ssh_user:
+          title: Ssh User
+          type: string
+          description: SSH username for remote access
+          default: root
+          x-walrus-ui:
+            group: Basic
+            order: 8
+        ssh_password:
+          title: Ssh Password
+          type: string
+          description: SSH password for remote access
+          default: password
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 9
+        ldap_organisation:
+          title: Ldap Organisation
+          type: string
+          description: LDAP 组织名称
+          default: Example Inc
+          x-walrus-ui:
+            group: Basic
+            order: 10
+        ldap_domain:
+          title: Ldap Domain
+          type: string
+          description: LDAP 域名
+          default: example.org
+          x-walrus-ui:
+            group: Basic
+            order: 11
+        ldap_base_dn:
+          title: Ldap Base Dn
+          type: string
+          description: LDAP Base DN
+          default: dc=example,dc=org
+          x-walrus-ui:
+            group: Basic
+            order: 12
+        ldap_admin_password:
+          title: Ldap Admin Password
+          type: string
+          description: LDAP 管理员密码
+          default: admin
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 13
+        ldap_config_password:
+          title: Ldap Config Password
+          type: string
+          description: LDAP 配置密码
+          default: config
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 14
+        ldap_readonly_user:
+          title: Ldap Readonly User
+          type: boolean
+          description: 是否创建只读用户
+          default: true
+          x-walrus-ui:
+            group: Basic
+            order: 15
+        ldap_readonly_username:
+          title: Ldap Readonly Username
+          type: string
+          description: LDAP 只读用户名
+          default: readonly
+          x-walrus-ui:
+            group: Basic
+            order: 16
+        ldap_readonly_password:
+          title: Ldap Readonly Password
+          type: string
+          description: LDAP 只读用户密码
+          default: readonly
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 17
+        ldap_groups:
+          title: Ldap Groups
+          type: array
+          description: LDAP 组配置
+          default:
+          - gid: 5000
+            name: users
+          - gid: 5001
+            name: admins
+          items:
+            properties:
+              gid:
+                title: Gid
+                type: number
+                x-walrus-ui:
+                  order: 2
+              name:
+                title: Name
+                type: string
+                x-walrus-ui:
+                  order: 1
+            required:
+            - gid
+            - name
+            type: object
+            x-walrus-ui:
+              colSpan: 12
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 18
+        ldap_users:
+          title: Ldap Users
+          type: array
+          description: LDAP 用户配置
+          default:
+          - cn: Test User
+            display_name: Test User
+            gid_number: 5000
+            given_name: Test
+            home_dir: /home/testuser
+            login_shell: /bin/bash
+            password_hash: '{SSHA}Eby5DqNessnnA9J/TAH9mMOSXytlMD0Z'
+            surname: User
+            uid: testuser
+            uid_number: 10000
+          - cn: Admin User
+            display_name: Admin User
+            gid_number: 5001
+            given_name: User
+            home_dir: /home/adminuser
+            login_shell: /bin/bash
+            password_hash: '{SSHA}Eby5DqNessnnA9J/TAH9mMOSXytlMD0Z'
+            surname: Admin
+            uid: adminuser
+            uid_number: 10001
+          items:
+            properties:
+              cn:
+                title: Cn
+                type: string
+                x-walrus-ui:
+                  order: 4
+              display_name:
+                title: Display Name
+                type: string
+                x-walrus-ui:
+                  order: 5
+              gid_number:
+                title: Gid Number
+                type: number
+                x-walrus-ui:
+                  order: 7
+              given_name:
+                title: Given Name
+                type: string
+                x-walrus-ui:
+                  order: 3
+              home_dir:
+                title: Home Dir
+                type: string
+                x-walrus-ui:
+                  order: 10
+              login_shell:
+                title: Login Shell
+                type: string
+                x-walrus-ui:
+                  order: 9
+              password_hash:
+                title: Password Hash
+                type: string
+                x-walrus-ui:
+                  order: 8
+              surname:
+                title: Surname
+                type: string
+                x-walrus-ui:
+                  order: 2
+              uid:
+                title: Uid
+                type: string
+                x-walrus-ui:
+                  order: 1
+              uid_number:
+                title: Uid Number
+                type: number
+                x-walrus-ui:
+                  order: 6
+            required:
+            - cn
+            - display_name
+            - gid_number
+            - given_name
+            - home_dir
+            - login_shell
+            - password_hash
+            - surname
+            - uid
+            - uid_number
+            type: object
+            x-walrus-ui:
+              colSpan: 12
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 19
       x-walrus-ui:
         groupOrder:
         - Basic
