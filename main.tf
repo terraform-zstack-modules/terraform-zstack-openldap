@@ -6,7 +6,7 @@ locals {
 
 # 创建镜像
 module "openldap_image" {
-  source = "git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git"
 
   create_image        = true
   image_name          = var.image_name
@@ -21,7 +21,7 @@ module "openldap_image" {
 
 # 创建虚拟机实例
 module "openldap_instance" {
-  source = "git::https://github.com/chijiajian/terraform-zstack-instance.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git"
 
   name                  = var.instance_name
   description           = "OpenLDAP Server Created by Terraform"
