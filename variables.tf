@@ -117,6 +117,11 @@ variable "ldap_readonly_user" {
   default     = true
 }
 
+variable "expunge" {
+  type  = bool
+  default = true
+}
+
 variable "ldap_readonly_username" {
   description = "LDAP 只读用户名"
   type        = string

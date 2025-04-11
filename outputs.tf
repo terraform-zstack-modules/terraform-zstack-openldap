@@ -62,3 +62,10 @@ output "ldaps_connection_string" {
   description = "LDAPS 连接字符串"
   value       = "ldaps://${module.openldap_instance.instance_ips[0]}:636"
 }
+
+output "endpoints" {
+  value = {
+    phpldapadmin_url       =  "http://${module.openldap_instance.instance_ips[0]}:8080"
+    ldap_connection_string = "ldap://${module.openldap_instance.instance_ips[0]}:389"
+  }
+}

@@ -15,6 +15,7 @@ module "openldap_image" {
   platform           = "Linux"
   format             = "qcow2"
   architecture       = "x86_64"
+  expunge            = var.expunge
 
   backup_storage_name = var.backup_storage_name
 }
@@ -29,6 +30,8 @@ module "openldap_instance" {
   image_uuid            = module.openldap_image.image_uuid
   l3_network_name       = var.l3_network_name
   instance_offering_name = var.instance_offering_name
+
+  expunge            = var.expunge
 }
 
 # 生成 docker-compose 文件

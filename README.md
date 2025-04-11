@@ -17,8 +17,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_openldap_image"></a> [openldap\_image](#module\_openldap\_image) | git::http://dev.zstack.io:9080/jiajian.chi/terraform-zstack-image.git | n/a |
-| <a name="module_openldap_instance"></a> [openldap\_instance](#module\_openldap\_instance) | git::http://dev.zstack.io:9080/jiajian.chi/terraform-zstack-instance.git | n/a |
+| <a name="module_openldap_image"></a> [openldap\_image](#module\_openldap\_image) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git | n/a |
+| <a name="module_openldap_instance"></a> [openldap\_instance](#module\_openldap\_instance) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git | n/a |
 
 ## Resources
 
@@ -34,6 +34,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_backup_storage_name"></a> [backup\_storage\_name](#input\_backup\_storage\_name) | Name of the backup storage to use | `string` | `"Ceph"` | no |
 | <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br/><br/>Examples:<pre>context:<br/>  project:<br/>    name: string<br/>    id: string<br/>  environment:<br/>    name: string<br/>    id: string<br/>  resource:<br/>    name: string<br/>    id: string</pre> | `map(any)` | `{}` | no |
+| <a name="input_expunge"></a> [expunge](#input\_expunge) | n/a | `bool` | `true` | no |
 | <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Name for the log server image | `string` | `"openldap-by-terraform"` | no |
 | <a name="input_image_url"></a> [image\_url](#input\_image\_url) | URL to download the image from | `string` | `"http://minio.zstack.io:9001/packer/openldap-by-packer-image-compressed.qcow2"` | no |
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | Name for the openldap server instance | `string` | `"openldap"` | no |
@@ -56,6 +57,7 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_endpoints"></a> [endpoints](#output\_endpoints) | n/a |
 | <a name="output_ldap_connection_string"></a> [ldap\_connection\_string](#output\_ldap\_connection\_string) | LDAP 连接字符串 |
 | <a name="output_ldaps_connection_string"></a> [ldaps\_connection\_string](#output\_ldaps\_connection\_string) | LDAPS 连接字符串 |
 | <a name="output_openldap_admin_dn"></a> [openldap\_admin\_dn](#output\_openldap\_admin\_dn) | OpenLDAP 管理员 DN |
@@ -69,6 +71,7 @@
 | <a name="output_walrus_resource_id"></a> [walrus\_resource\_id](#output\_walrus\_resource\_id) | The id of resource where deployed in Walrus. |
 | <a name="output_walrus_resource_name"></a> [walrus\_resource\_name](#output\_walrus\_resource\_name) | The name of resource where deployed in Walrus. |
 <!-- END_TF_DOCS -->
+
 
 ## phpLDAPadmin 登录
 
